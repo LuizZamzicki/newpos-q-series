@@ -11,22 +11,31 @@ class NewposQPrintJob {
 
   NewposQPrintJob init() => _add(<String, Object?>{'type': 'init'});
 
-  NewposQPrintJob setDepth(int depth) =>
+  NewposQPrintJob setDepth([int depth = NewposQPrinterDefaults.depth]) =>
       _add(<String, Object?>{'type': 'setDepth', 'depth': depth});
 
-  NewposQPrintJob setFontSize(int fontSize) =>
-      _add(<String, Object?>{'type': 'setFontSize', 'fontSize': fontSize});
+  NewposQPrintJob setFontSize([
+    int fontSize = NewposQPrinterDefaults.fontSize,
+  ]) => _add(<String, Object?>{'type': 'setFontSize', 'fontSize': fontSize});
 
-  NewposQPrintJob setAlignment(NewposQAlignment alignment) => _add(
-    <String, Object?>{'type': 'setAlignment', 'alignment': alignment.value},
-  );
+  NewposQPrintJob setAlignment([
+    NewposQAlignment alignment = NewposQPrinterDefaults.alignment,
+  ]) => _add(<String, Object?>{
+    'type': 'setAlignment',
+    'alignment': alignment.value,
+  });
 
-  NewposQPrintJob feedLines(int lines) =>
+  NewposQPrintJob feedLines([int lines = NewposQPrinterDefaults.feedLines]) =>
       _add(<String, Object?>{'type': 'feedLines', 'lines': lines});
 
-  NewposQPrintJob blankLines({int lines = 1, int height = 24}) => _add(
-    <String, Object?>{'type': 'blankLines', 'lines': lines, 'height': height},
-  );
+  NewposQPrintJob blankLines({
+    int lines = 1,
+    int height = NewposQPrinterDefaults.blankLineHeight,
+  }) => _add(<String, Object?>{
+    'type': 'blankLines',
+    'lines': lines,
+    'height': height,
+  });
 
   NewposQPrintJob text(String text) =>
       _add(<String, Object?>{'type': 'text', 'text': text});
@@ -34,8 +43,8 @@ class NewposQPrintJob {
   NewposQPrintJob formattedText(
     String text, {
     String typeface = 'ST',
-    int fontSize = 24,
-    NewposQAlignment alignment = NewposQAlignment.left,
+    int fontSize = NewposQPrinterDefaults.fontSize,
+    NewposQAlignment alignment = NewposQPrinterDefaults.alignment,
   }) => _add(<String, Object?>{
     'type': 'formattedText',
     'text': text,
@@ -64,7 +73,7 @@ class NewposQPrintJob {
   NewposQPrintJob bitmap(
     Uint8List bytes, {
     NewposQAlignment alignment = NewposQAlignment.center,
-    int size = 10,
+    int size = NewposQPrinterDefaults.bitmapSize,
   }) => _add(<String, Object?>{
     'type': 'bitmap',
     'bytes': bytes,
@@ -74,10 +83,11 @@ class NewposQPrintJob {
 
   NewposQPrintJob barcode(
     String data, {
-    NewposQBarcodeSymbology symbology = NewposQBarcodeSymbology.code128,
-    int height = 6,
-    int width = 12,
-    NewposQBarcodeTextPosition textPosition = NewposQBarcodeTextPosition.below,
+    NewposQBarcodeSymbology symbology = NewposQPrinterDefaults.barcodeSymbology,
+    int height = NewposQPrinterDefaults.barcodeHeight,
+    int width = NewposQPrinterDefaults.barcodeWidth,
+    NewposQBarcodeTextPosition textPosition =
+        NewposQPrinterDefaults.barcodeTextPosition,
   }) => _add(<String, Object?>{
     'type': 'barcode',
     'data': data,
@@ -89,9 +99,9 @@ class NewposQPrintJob {
 
   NewposQPrintJob qrCode(
     String data, {
-    int moduleSize = 10,
+    int moduleSize = NewposQPrinterDefaults.qrModuleSize,
     NewposQErrorCorrectionLevel errorCorrectionLevel =
-        NewposQErrorCorrectionLevel.medium,
+        NewposQPrinterDefaults.qrErrorCorrectionLevel,
   }) => _add(<String, Object?>{
     'type': 'qrcode',
     'data': data,
@@ -105,8 +115,9 @@ class NewposQPrintJob {
   NewposQPrintJob escPos(Uint8List bytes) =>
       _add(<String, Object?>{'type': 'escPos', 'bytes': bytes});
 
-  NewposQPrintJob performPrint({int feedLines = 160}) =>
-      _add(<String, Object?>{'type': 'performPrint', 'feedLines': feedLines});
+  NewposQPrintJob performPrint({
+    int feedLines = NewposQPrinterDefaults.feedLines,
+  }) => _add(<String, Object?>{'type': 'performPrint', 'feedLines': feedLines});
 
   NewposQPrintJob _add(Map<String, Object?> operation) {
     _operations.add(operation);

@@ -215,7 +215,11 @@ class NewposQPrinter(private val context: Context) {
                 "setDepth" -> printer.setPrinterPrintDepth(operation.int("depth", 6), callback)
                 "setFontSize" -> printer.setPrinterPrintFontSize(operation.int("fontSize", 24), callback)
                 "setAlignment" -> printer.setPrinterPrintAlignment(operation.int("alignment", 0), callback)
-                "feedLines" -> printer.printerFeedLines(operation.int("lines", 160), callback)
+                "feedLines" -> {
+                    val lines = operation.int("lines", 160).coerceAtLeast(0)
+                    printer.printBlankLines(1, 1, callback)
+                    printer.printerPerformPrint(lines, callback)
+                }
                 "blankLines" -> printer.printBlankLines(
                     operation.int("lines", 1),
                     operation.int("height", 24),

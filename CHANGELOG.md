@@ -1,3 +1,5 @@
+# changelog
+
 ## 0.0.1
 
 * Initial Android implementation for Newpos Q-series internal thermal printers.

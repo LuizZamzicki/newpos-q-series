@@ -43,9 +43,9 @@ class PrinterNewposQ {
 
   Future<List<bool>> printText(
     String text, {
-    int fontSize = 24,
-    NewposQAlignment alignment = NewposQAlignment.left,
-    int feedLines = 160,
+    int fontSize = NewposQPrinterDefaults.fontSize,
+    NewposQAlignment alignment = NewposQPrinterDefaults.alignment,
+    int feedLines = NewposQPrinterDefaults.feedLines,
     Duration timeout = const Duration(seconds: 10),
   }) {
     final job = NewposQPrintJob()
