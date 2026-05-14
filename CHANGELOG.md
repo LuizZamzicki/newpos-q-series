@@ -1,5 +1,13 @@
 # changelog
 
+## 0.0.3
+
+* Fixed changelog entry for the published 0.0.2 release.
+
+## 0.0.2
+
+* Added public API documentation for pub.dev documentation scoring.
+
 ## 0.0.1
 
 * Initial Android implementation for Newpos Q-series internal thermal printers.
