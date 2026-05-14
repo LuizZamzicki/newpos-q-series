@@ -1,6 +1,6 @@
 name: newpos_q_series
 description: Flutter plugin for Newpos Q-series internal thermal printers with text, image, QR code, barcode, ESC/POS, and printer status support.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/LuizZamzicki/newpos-q-series
 
 environment:
