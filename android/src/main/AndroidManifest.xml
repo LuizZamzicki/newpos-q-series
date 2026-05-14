@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="br.com.sla.newpos_q_series">
+  <queries>
+    <package android:name="com.iposprinter.iposprinterservice" />
+    <intent>
+      <action android:name="com.iposprinter.iposprinterservice.IPosPrintService" />
+      <category android:name="android.intent.category.DEFAULT" />
+    </intent>
+  </queries>
+</manifest>
